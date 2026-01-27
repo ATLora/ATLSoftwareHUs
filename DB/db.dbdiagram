@@ -1,0 +1,417 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "users",
+      "schemaName": "public",
+      "x": 0,
+      "y": 50
+    },
+    {
+      "name": "organizations",
+      "schemaName": "public",
+      "x": 310.0703125,
+      "y": 50
+    },
+    {
+      "name": "user_organization",
+      "schemaName": "public",
+      "x": 628.6318359375,
+      "y": 50
+    },
+    {
+      "name": "roles",
+      "schemaName": "public",
+      "x": 924.2021484375,
+      "y": 50
+    },
+    {
+      "name": "job_titles",
+      "schemaName": "public",
+      "x": 0,
+      "y": 388
+    },
+    {
+      "name": "plans",
+      "schemaName": "public",
+      "x": 310.0703125,
+      "y": 420
+    },
+    {
+      "name": "organization_plans",
+      "schemaName": "public",
+      "x": 628.6318359375,
+      "y": 292
+    },
+    {
+      "name": "industries",
+      "schemaName": "public",
+      "x": 924.2021484375,
+      "y": 196
+    },
+    {
+      "name": "countries",
+      "schemaName": "public",
+      "x": 0,
+      "y": 534
+    },
+    {
+      "name": "id_type",
+      "schemaName": "public",
+      "x": 0,
+      "y": 1032
+    },
+    {
+      "name": "clients",
+      "schemaName": "public",
+      "x": 310.0703125,
+      "y": 662
+    },
+    {
+      "name": "orders",
+      "schemaName": "public",
+      "x": 628.6318359375,
+      "y": 534
+    },
+    {
+      "name": "order_logs",
+      "schemaName": "public",
+      "x": 0,
+      "y": 1178
+    },
+    {
+      "name": "actions",
+      "schemaName": "public",
+      "x": 0,
+      "y": 1630
+    },
+    {
+      "name": "order_statuses",
+      "schemaName": "public",
+      "x": 297.53794213582944,
+      "y": 1633.3486487776293
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": [
+    {
+      "firstFieldNames": [
+        "job_title_id"
+      ],
+      "firstTableName": "user_organization",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "job_titles",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "industry_id"
+      ],
+      "firstTableName": "organizations",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "industries",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "country_id"
+      ],
+      "firstTableName": "organizations",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "countries",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "organization_id"
+      ],
+      "firstTableName": "organization_plans",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "organizations",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "plan_id"
+      ],
+      "firstTableName": "organization_plans",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "plans",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "user_organization",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "organization_id"
+      ],
+      "firstTableName": "user_organization",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "organizations",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "role_id"
+      ],
+      "firstTableName": "user_organization",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "roles",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "organization_id"
+      ],
+      "firstTableName": "clients",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "organizations",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "organization_id"
+      ],
+      "firstTableName": "orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "organizations",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "client_id"
+      ],
+      "firstTableName": "orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "clients",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "creator_id"
+      ],
+      "firstTableName": "orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "operator_id"
+      ],
+      "firstTableName": "orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id_type"
+      ],
+      "firstTableName": "clients",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "id_type",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "org_id_type"
+      ],
+      "firstTableName": "organizations",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "id_type",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "order_status_id"
+      ],
+      "firstTableName": "orders",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "order_statuses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "order_id"
+      ],
+      "firstTableName": "order_logs",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "orders",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "user_id"
+      ],
+      "firstTableName": "order_logs",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "action_id"
+      ],
+      "firstTableName": "order_logs",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "actions",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "order_status_id"
+      ],
+      "firstTableName": "order_logs",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "order_statuses",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "operator_id"
+      ],
+      "firstTableName": "order_logs",
+      "firstSchemaName": "public",
+      "firstRelation": "*",
+      "secondFieldNames": [
+        "id"
+      ],
+      "secondTableName": "users",
+      "secondSchemaName": "public",
+      "secondRelation": "1",
+      "checkPoints": []
+    }
+  ]
+}

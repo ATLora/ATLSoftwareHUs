@@ -1,0 +1,148 @@
+// Database Model: MicroSaaS First Draft (Complete)
+
+Table users {
+  id uuid [primary key]
+  first_name varchar [not null]
+  last_name varchar [not null]
+  email varchar [unique, not null]
+  phone_number varchar [unique, not null, note: 'Formatted Phone number']
+  password varchar [not null]
+  creation_date timestamp [not null, default: `now()`]
+}
+
+Table organizations {
+  id uuid [primary key]
+  name varchar [not null]
+  org_id_type uuid [not null, note: '1: CC, 2: NIT, 3: Passport']
+  org_id varchar [unique, not null, note: 'Unique identifier for the organization / NIT for org and CC or passport for individuals']
+  legal_name varchar [note: 'Necessary for Organization signup']
+  industry_id uuid [not null]
+  size varchar [note: 'Necessary for Organization signup'] 
+  address varchar [note: 'Necessary for Organization signup']
+  country_id uuid [not null]
+  creation_date timestamp [not null, default: `now()`]
+}
+
+Table user_organization {
+  id uuid [primary key]
+  user_id uuid [not null]
+  organization_id uuid [not null]
+  role_id uuid [not null]
+  job_title_id uuid [not null]
+  status integer [not null, default: 1, note: '1: Active, 0: Inactive'] 
+}
+
+Table roles {
+  id uuid [primary key]
+  name varchar [not null]
+}
+
+Table job_titles {
+  id uuid [primary key]
+  name varchar [not null]
+}
+
+Table plans {
+  id uuid [primary key]
+  display_name varchar [not null]
+  name varchar [not null]  
+  description text [not null]
+  price integer [not null]
+  periodicity_months integer [not null]
+}
+
+Table organization_plans {
+  id uuid [primary key]
+  organization_id uuid [not null]
+  plan_id uuid [not null]
+  creation_date timestamp [not null]
+  end_date timestamp [not null]
+  status integer [not null, default: 1, note: '1: Active, 0: Inactive'] 
+}
+
+Table industries {
+  id uuid [primary key]
+  name varchar [not null]
+}
+
+Table countries {
+  id uuid [primary key]
+  name varchar [not null]
+}
+
+Table id_type {
+  id uuid [primary key]
+  name varchar [not null]
+}
+
+Table clients {
+  id uuid [primary key]
+  organization_id uuid [not null] 
+  name varchar [not null]
+  id_type uuid [not null, note: '1: CC, 2: NIT, 3: Passport']
+  id_number id_number [unique, not null]
+  phone varchar [not null]
+  email varchar
+  address varchar [not null]
+  status integer [not null, default: 1]
+}
+
+Table orders {
+  id uuid [primary key, increment]
+  organization_id uuid [not null]
+  client_id uuid [not null]
+  order_status_id uuid [not null, default: 1]
+  creator_id uuid [not null]
+  operator_id uuid
+  date_assigned date [not null]
+  start_hour time [not null]
+  address varchar
+  description text [not null]
+}
+
+Table order_logs {
+  id uuid [primary key, increment]
+  order_id uuid [not null]
+  user_id uuid [not null] // Who made the change
+  action_id uuid [not null]   
+  order_status_id uuid [null] // Status after the action
+  operator_id uuid // Assigned operator after the action
+  date_assigned date [null]
+  start_hour time [null]
+  address varchar
+  description text [null]
+  created_at timestamp [default: `now()`]
+}
+
+Table actions {
+  id uuid [primary key]
+  name varchar [not null] // e.g., Create Order, Assign Operator, Update Status
+}
+
+Table order_statuses {
+  id uuid [primary key]
+  name varchar [not null] // e.g., Created, Pending, In Progress, Done
+}
+
+// Relationships
+Ref: user_organization.job_title_id > job_titles.id
+Ref: organizations.industry_id > industries.id
+Ref: organizations.country_id > countries.id
+Ref: organization_plans.organization_id > organizations.id 
+Ref: organization_plans.plan_id > plans.id
+Ref: user_organization.user_id > users.id
+Ref: user_organization.organization_id > organizations.id
+Ref: user_organization.role_id > roles.id
+Ref: clients.organization_id > organizations.id
+Ref: orders.organization_id > organizations.id
+Ref: orders.client_id > clients.id
+Ref: orders.creator_id > users.id
+Ref: orders.operator_id > users.id
+Ref: clients.id_type > id_type.id
+Ref: organizations.org_id_type > id_type.id
+Ref: orders.order_status_id > order_statuses.id
+Ref: order_logs.order_id > orders.id
+Ref: order_logs.user_id > users.id
+Ref: order_logs.action_id > actions.id
+Ref: order_logs.order_status_id > order_statuses.id
+Ref: order_logs.operator_id > users.id
